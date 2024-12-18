@@ -1,0 +1,93 @@
+#!/sbin/openrc-run
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/bit/.bit" ]; then
+	BITD_DEFAULT_DATADIR="/var/lib/bit/.bit"
+else
+	BITD_DEFAULT_DATADIR="/var/lib/bitd"
+fi
+
+BITD_CONFIGFILE=${BITD_CONFIGFILE:-/etc/bit/bit.conf}
+BITD_PIDDIR=${BITD_PIDDIR:-/var/run/bitd}
+BITD_PIDFILE=${BITD_PIDFILE:-${BITD_PIDDIR}/bitd.pid}
+BITD_DATADIR=${BITD_DATADIR:-${BITD_DEFAULT_DATADIR}}
+BITD_USER=${BITD_USER:-${BIT_USER:-bit}}
+BITD_GROUP=${BITD_GROUP:-bit}
+BITD_BIN=${BITD_BIN:-/usr/bin/bitd}
+BITD_NICE=${BITD_NICE:-${NICELEVEL:-0}}
+BITD_OPTS="${BITD_OPTS:-${BIT_OPTS}}"
+
+name="Bit Core Daemon"
+description="Bit cryptocurrency P2P network daemon"
+
+command="/usr/bin/bitd"
+command_args="-pid=\"${BITD_PIDFILE}\" \
+		-conf=\"${BITD_CONFIGFILE}\" \
+		-datadir=\"${BITD_DATADIR}\" \
+		-daemon \
+		${BITD_OPTS}"
+
+required_files="${BITD_CONFIGFILE}"
+start_stop_daemon_args="-u ${BITD_USER} \
+			-N ${BITD_NICE} -w 2000"
+pidfile="${BITD_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${BITD_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${BITD_USER}:${BITD_GROUP}" \
+	"${BITD_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${BITD_USER}:${BITD_GROUP}" \
+	"${BITD_PIDDIR}"
+
+	checkpath -f \
+	-o "${BITD_USER}:${BITD_GROUP}" \
+	-m 0660 \
+	"${BITD_CONFIGFILE}"
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if grep -qs '^rpcuser=' "${BITD_CONFIGFILE}" && \
+		! grep -qs '^rpcpassword=' "${BITD_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run bitd."
+		eerror "The setting must appear in ${BITD_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Bit Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}
