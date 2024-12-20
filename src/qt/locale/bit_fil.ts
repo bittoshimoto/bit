@@ -722,8 +722,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">Ang label na ito ay magiging pula kung ang sinumang tatanggap ay tumanggap ng halagang mas mababa sa kasalukuyang dust threshold.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Maaaring magbago ng +/- %1 satoshi(s) kada input.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Maaaring magbago ng +/- %1 toshi(s) kada input.</translation>
     </message>
     <message>
         <source>(no label)</source>

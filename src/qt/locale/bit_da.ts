@@ -970,8 +970,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">Denne mærkat bliver rød, hvis en eller flere modtagere modtager et beløb, der er mindre end den aktuelle støvgrænse.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Kan variere med ±%1 satoshi per input.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Kan variere med ±%1 toshi per input.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -2758,10 +2758,10 @@ For mere information om brug af denne konsol, skriv %6.
     <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee rate of "100 satoshis per kvB" for a transaction size of 500 virtual bytes (half of 1 kvB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee rate of "100 toshis per kvB" for a transaction size of 500 virtual bytes (half of 1 kvB) would ultimately yield a fee of only 50 toshis.</source>
         <translation type="unfinished">Angiv et brugerdefineret gebyr pr. kB (1.000 bytes) af transaktionens virtuelle størrelse.
 
-Bemærk: Da gebyret beregnes på per-byte-basis, ville en gebyrsats på "100 satoshis pr. kvB" for en transaktionsstørrelse på 500 virtuelle bytes (halvdelen af 1 kvB) i sidste ende kun give et gebyr på 50 satoshis.</translation>
+Bemærk: Da gebyret beregnes på per-byte-basis, ville en gebyrsats på "100 toshis pr. kvB" for en transaktionsstørrelse på 500 virtuelle bytes (halvdelen af 1 kvB) i sidste ende kun give et gebyr på 50 toshis.</translation>
     </message>
     <message>
         <source>When there is less transaction volume than space in the blocks, miners as well as relaying nodes may enforce a minimum fee. Paying only this minimum fee is just fine, but be aware that this can result in a never confirming transaction once there is more demand for bit transactions than the network can process.</source>
@@ -3869,7 +3869,7 @@ Gå til Fil &gt; Åbn Pung for, at indlæse en pung.
     </message>
     <message>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
-        <translation type="unfinished">Beskæring er sat under minimumsgrænsen på %d MiB. Brug venligst et større tal.</translation>
+        <translation type="unfinished">Beskæring er tos under minimumsgrænsen på %d MiB. Brug venligst et større tal.</translation>
     </message>
     <message>
         <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
@@ -3881,7 +3881,7 @@ Gå til Fil &gt; Åbn Pung for, at indlæse en pung.
     </message>
     <message>
         <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
-        <translation type="unfinished">Blokdatabasen indeholder en blok, som ser ud til at være fra fremtiden. Dette kan skyldes, at din computers dato og tid ikke er sat korrekt. Genopbyg kun blokdatabasen, hvis du er sikker på, at din computers dato og tid er korrekt</translation>
+        <translation type="unfinished">Blokdatabasen indeholder en blok, som ser ud til at være fra fremtiden. Dette kan skyldes, at din computers dato og tid ikke er tos korrekt. Genopbyg kun blokdatabasen, hvis du er sikker på, at din computers dato og tid er korrekt</translation>
     </message>
     <message>
         <source>The block index db contains a legacy 'txindex'. To clear the occupied disk space, run a full -reindex, otherwise ignore this error. This error message will not be displayed again.</source>
@@ -3945,7 +3945,7 @@ Gå til Fil &gt; Åbn Pung for, at indlæse en pung.
     </message>
     <message>
         <source>%s is set very high!</source>
-        <translation type="unfinished">%s er meget højt sat!</translation>
+        <translation type="unfinished">%s er meget højt tos!</translation>
     </message>
     <message>
         <source>-maxmempool must be at least %d MB</source>

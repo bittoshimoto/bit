@@ -999,7 +999,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">ఏదైనా గ్రహీత ప్రస్తుత ధూళి థ్రెషోల్డ్ కంటే చిన్న మొత్తాన్ని స్వీకరిస్తే ఈ లేబుల్ ఎరుపు రంగులోకి మారుతుంది.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
         <translation type="unfinished">ఒక్కో ఇన్‌పుట్‌కు +/- %1 సతోషి(లు) మారవచ్చు.</translation>
     </message>
     <message>

@@ -729,8 +729,8 @@ Firmar é posible unicamente con enderezos de tipo 'legacy'.</translation>
         <translation type="unfinished">Esta etiqueta tórnase vermella se algún receptor recibe unha cantidade máis pequena que o actual límite de po.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Pode variar +/- %1 satoshi(s) por entrada.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Pode variar +/- %1 toshi(s) por entrada.</translation>
     </message>
     <message>
         <source>(no label)</source>

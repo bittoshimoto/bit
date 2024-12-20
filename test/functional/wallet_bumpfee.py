@@ -34,7 +34,7 @@ from test_framework.wallet import MiniWallet
 WALLET_PASSPHRASE = "test"
 WALLET_PASSPHRASE_TIMEOUT = 3600
 
-# Fee rates (sat/vB)
+# Fee rates (tos/vB)
 INSUFFICIENT =      1
 ECONOMICAL   =     50
 NORMAL       =    100
@@ -71,7 +71,7 @@ class BumpFeeTest(BitTestFramework):
         peer_node, rbf_node = self.nodes
         rbf_node_address = rbf_node.getnewaddress()
 
-        # fund rbf node with 10 coins of 0.001 bit (100,000 satoshis)
+        # fund rbf node with 10 coins of 0.001 bit (100,000 toshis)
         self.log.info("Mining blocks...")
         self.generate(peer_node, 110)
         for _ in range(25):
@@ -131,7 +131,7 @@ class BumpFeeTest(BitTestFramework):
         # Test fee_rate values that don't pass fixed-point parsing checks.
         for invalid_value in ["", 0.000000001, 1e-09, 1.111111111, 1111111111111111, "31.999999999999999999999"]:
             assert_raises_rpc_error(-3, msg, rbf_node.bumpfee, rbfid, {"fee_rate": invalid_value})
-        # Test fee_rate values that cannot be represented in sat/vB.
+        # Test fee_rate values that cannot be represented in tos/vB.
         for invalid_value in [0.0001, 0.00000001, 0.00099999, 31.99999999, "0.0001", "0.00000001", "0.00099999", "31.99999999"]:
             assert_raises_rpc_error(-3, msg, rbf_node.bumpfee, rbfid, {"fee_rate": invalid_value})
         # Test fee_rate out of range (negative number).
@@ -157,7 +157,7 @@ class BumpFeeTest(BitTestFramework):
         for k, v in {"number": 42, "object": {"foo": "bar"}}.items():
             assert_raises_rpc_error(-3, f"JSON value of type {k} for field estimate_mode is not of expected type string",
                 rbf_node.bumpfee, rbfid, {"estimate_mode": v})
-        for mode in ["foo", Decimal("3.1415"), "sat/B", "BIT/kB"]:
+        for mode in ["foo", Decimal("3.1415"), "tos/B", "BIT/kB"]:
             assert_raises_rpc_error(-8, 'Invalid estimate_mode parameter, must be one of: "unset", "economical", "conservative"',
                 rbf_node.bumpfee, rbfid, {"estimate_mode": mode})
 
@@ -388,7 +388,7 @@ def test_dust_to_fee(self, rbf_node, dest_address):
     # boundary. Thus expected transaction size (p2wpkh, 1 input, 2 outputs) is 140-141 vbytes, usually 141.
     if not 140 <= fulltx["vsize"] <= 141:
         raise AssertionError("Invalid tx vsize of {} (140-141 expected), full tx: {}".format(fulltx["vsize"], fulltx))
-    # Bump with fee_rate of 350.25 sat/vB vbytes to create dust.
+    # Bump with fee_rate of 350.25 tos/vB vbytes to create dust.
     # Expected fee is 141 vbytes * fee_rate 0.00350250 BIT / 1000 vbytes = 0.00049385 BIT.
     # or occasionally 140 vbytes * fee_rate 0.00350250 BIT / 1000 vbytes = 0.00049035 BIT.
     # Dust should be dropped to the fee, so actual bump fee is 0.00050000 BIT.
@@ -688,7 +688,7 @@ def test_feerate_checks_replaced_outputs(self, rbf_node, peer_node):
     # Since the bumped tx will replace all of the outputs with a single output, we can estimate that its size will 31 * (len(outputs) - 1) bytes smaller
     tx_size = tx_details["decoded"]["vsize"]
     est_bumped_size = tx_size - (len(tx_details["decoded"]["vout"]) - 1) * 31
-    inc_fee_rate = max(rbf_node.getmempoolinfo()["incrementalrelayfee"], Decimal(0.00005000)) # Wallet has a fixed incremental relay fee of 5 sat/vb
+    inc_fee_rate = max(rbf_node.getmempoolinfo()["incrementalrelayfee"], Decimal(0.00005000)) # Wallet has a fixed incremental relay fee of 5 tos/vb
     # RPC gives us fee as negative
     min_fee = (-tx_details["fee"] + get_fee(est_bumped_size, inc_fee_rate)) * Decimal(1e8)
     min_fee_rate = (min_fee / est_bumped_size).quantize(Decimal("1.000"))

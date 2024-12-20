@@ -15,7 +15,7 @@
 #include <type_traits>
 
 const std::string CURRENCY_UNIT = "BIT"; // One formatted unit
-const std::string CURRENCY_ATOM = "sat"; // One indivisible minimum value unit
+const std::string CURRENCY_ATOM = "tos"; // One indivisible minimum value unit
 
 /* Used to determine type of fee estimation requested */
 enum class FeeEstimateMode {
@@ -23,20 +23,20 @@ enum class FeeEstimateMode {
     ECONOMICAL,   //!< Force estimateSmartFee to use non-conservative estimates
     CONSERVATIVE, //!< Force estimateSmartFee to use conservative estimates
     BIT_KVB,      //!< Use BIT/kvB fee rate unit
-    SAT_VB,       //!< Use sat/vB fee rate unit
+    SAT_VB,       //!< Use tos/vB fee rate unit
 };
 
 /**
- * Fee rate in satoshis per kilovirtualbyte: CAmount / kvB
+ * Fee rate in toshis per kilovirtualbyte: CAmount / kvB
  */
 class CFeeRate
 {
 private:
-    /** Fee rate in sat/kvB (satoshis per 1000 virtualbytes) */
+    /** Fee rate in tos/kvB (toshis per 1000 virtualbytes) */
     CAmount nSatoshisPerK;
 
 public:
-    /** Fee rate of 0 satoshis per kvB */
+    /** Fee rate of 0 toshis per kvB */
     CFeeRate() : nSatoshisPerK(0) { }
     template<typename I>
     explicit CFeeRate(const I _nSatoshisPerK): nSatoshisPerK(_nSatoshisPerK) {
@@ -45,22 +45,22 @@ public:
     }
 
     /**
-     * Construct a fee rate from a fee in satoshis and a vsize in vB.
+     * Construct a fee rate from a fee in toshis and a vsize in vB.
      *
-     * param@[in]   nFeePaid    The fee paid by a transaction, in satoshis
+     * param@[in]   nFeePaid    The fee paid by a transaction, in toshis
      * param@[in]   num_bytes   The vsize of a transaction, in vbytes
      */
     CFeeRate(const CAmount& nFeePaid, uint32_t num_bytes);
 
     /**
-     * Return the fee in satoshis for the given vsize in vbytes.
-     * If the calculated fee would have fractional satoshis, then the
-     * returned fee will always be rounded up to the nearest satoshi.
+     * Return the fee in toshis for the given vsize in vbytes.
+     * If the calculated fee would have fractional toshis, then the
+     * returned fee will always be rounded up to the nearest toshi.
      */
     CAmount GetFee(uint32_t num_bytes) const;
 
     /**
-     * Return the fee in satoshis for a vsize of 1000 vbytes
+     * Return the fee in toshis for a vsize of 1000 vbytes
      */
     CAmount GetFeePerK() const { return GetFee(1000); }
     friend bool operator<(const CFeeRate& a, const CFeeRate& b) { return a.nSatoshisPerK < b.nSatoshisPerK; }

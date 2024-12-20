@@ -9,13 +9,13 @@
 
 #include <cstdint>
 
-/** Amount in satoshis (Can be negative) */
+/** Amount in toshis (Can be negative) */
 typedef int64_t CAmount;
 
-/** The amount of satoshis in one BIT. */
+/** The amount of toshis in one BIT. */
 static constexpr CAmount COIN = 100000000;
 
-/** No amount larger than this (in satoshi) is valid.
+/** No amount larger than this (in toshi) is valid.
  *
  * Note that this constant is *not* the total money supply, which in Bit
  * currently happens to be less than 21,000,000 BIT for various reasons, but

@@ -844,8 +844,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">Ova naljepnica postaje crvena ako bilo koji primatelj primi količinu manju od trenutnog praga prašine.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Može varirati +/- %1 satoshi (a) po upisu vrijednosti.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Može varirati +/- %1 toshi (a) po upisu vrijednosti.</translation>
     </message>
     <message>
         <source>(no label)</source>

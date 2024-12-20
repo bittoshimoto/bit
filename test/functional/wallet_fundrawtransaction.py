@@ -605,7 +605,7 @@ class RawTransactionsTest(BitTestFramework):
 
         # Choose 2 inputs
         inputs = self.nodes[1].listunspent()[0:2]
-        value = sum(inp["amount"] for inp in inputs) - Decimal("0.00000500") # Pay a 500 sat fee
+        value = sum(inp["amount"] for inp in inputs) - Decimal("0.00000500") # Pay a 500 tos fee
         outputs = {self.nodes[0].getnewaddress():value}
         rawtx = self.nodes[1].createrawtransaction(inputs, outputs)
         # fund a transaction that does not require a new key for the change output
@@ -769,7 +769,7 @@ class RawTransactionsTest(BitTestFramework):
         wwatch.unloadwallet()
 
     def test_option_feerate(self):
-        self.log.info("Test fundrawtxn with explicit fee rates (fee_rate sat/vB and feeRate BIT/kvB)")
+        self.log.info("Test fundrawtxn with explicit fee rates (fee_rate tos/vB and feeRate BIT/kvB)")
         node = self.nodes[3]
         # Make sure there is exactly one input so coin selection can't skew the result.
         assert_equal(len(self.nodes[3].listunspent(1)), 1)
@@ -794,7 +794,7 @@ class RawTransactionsTest(BitTestFramework):
         for param, zero_value in product(["fee_rate", "feeRate"], [0, 0.000, 0.00000000, "0", "0.000", "0.00000000"]):
             assert_equal(self.nodes[3].fundrawtransaction(rawtx, {param: zero_value})["fee"], 0)
 
-        # With no arguments passed, expect fee of 141 satoshis.
+        # With no arguments passed, expect fee of 141 toshis.
         assert_approx(node.fundrawtransaction(rawtx)["fee"], vexp=0.00000141, vspan=0.00000001)
         # Expect fee to be 10,000x higher when an explicit fee rate 10,000x greater is specified.
         result = node.fundrawtransaction(rawtx, {"fee_rate": 10000})
@@ -829,17 +829,17 @@ class RawTransactionsTest(BitTestFramework):
             # Test fee rate values that don't pass fixed-point parsing checks.
             for invalid_value in ["", 0.000000001, 1e-09, 1.111111111, 1111111111111111, "31.999999999999999999999"]:
                 assert_raises_rpc_error(-3, "Invalid amount", node.fundrawtransaction, rawtx, {param: invalid_value, "add_inputs": True})
-        # Test fee_rate values that cannot be represented in sat/vB.
+        # Test fee_rate values that cannot be represented in tos/vB.
         for invalid_value in [0.0001, 0.00000001, 0.00099999, 31.99999999, "0.0001", "0.00000001", "0.00099999", "31.99999999"]:
             assert_raises_rpc_error(-3, "Invalid amount",
                 node.fundrawtransaction, rawtx, {"fee_rate": invalid_value, "add_inputs": True})
 
-        self.log.info("Test min fee rate checks are bypassed with fundrawtxn, e.g. a fee_rate under 1 sat/vB is allowed")
+        self.log.info("Test min fee rate checks are bypassed with fundrawtxn, e.g. a fee_rate under 1 tos/vB is allowed")
         node.fundrawtransaction(rawtx, {"fee_rate": 0.999, "add_inputs": True})
         node.fundrawtransaction(rawtx, {"feeRate": 0.00000999, "add_inputs": True})
 
         self.log.info("- raises RPC error if both feeRate and fee_rate are passed")
-        assert_raises_rpc_error(-8, "Cannot specify both fee_rate (sat/vB) and feeRate (BIT/kvB)",
+        assert_raises_rpc_error(-8, "Cannot specify both fee_rate (tos/vB) and feeRate (BIT/kvB)",
             node.fundrawtransaction, rawtx, {"fee_rate": 0.1, "feeRate": 0.1, "add_inputs": True})
 
         self.log.info("- raises RPC error if both feeRate and estimate_mode passed")
@@ -901,7 +901,7 @@ class RawTransactionsTest(BitTestFramework):
         assert_equal(output[3], output[4] + result[4]['fee'])
         assert_equal(change[3] + result[3]['fee'], change[4])
 
-        # Test subtract fee from outputs with fee_rate (sat/vB)
+        # Test subtract fee from outputs with fee_rate (tos/vB)
         bit_kvb_to_sat_vb = 100000  # (1e5)
         result = [self.nodes[3].fundrawtransaction(rawtx),  # uses self.min_relay_tx_fee (set by settxfee)
             self.nodes[3].fundrawtransaction(rawtx, {"subtractFeeFromOutputs": []}),  # empty subtraction list
@@ -951,7 +951,7 @@ class RawTransactionsTest(BitTestFramework):
         assert_equal(share[2], share[3])
 
         # Output 0 takes at least as much share of the fee, and no more than 2
-        # satoshis more, than outputs 2 and 3.
+        # toshis more, than outputs 2 and 3.
         assert_greater_than_or_equal(share[0], share[2])
         assert_greater_than_or_equal(share[2] + Decimal(2e-8), share[0])
 
@@ -1393,7 +1393,7 @@ class RawTransactionsTest(BitTestFramework):
         self.generate(self.nodes[0], 1)
 
         # A P2WPKH input costs 68 vbytes; With a single P2WPKH output, the rest of the tx is 42 vbytes for a total of 110 vbytes.
-        # At a feerate of 1.85 sat/vb, the input will need a fee of 125.8 sats and the rest 77.7 sats
+        # At a feerate of 1.85 tos/vb, the input will need a fee of 125.8 sats and the rest 77.7 sats
         # The entire tx fee should be 203.5 sats.
         # Coin selection rounds the fee individually instead of at the end (due to how CFeeRate::GetFee works).
         # If rounding down (which is the incorrect behavior), then the calculated fee will be 125 + 77 = 202.

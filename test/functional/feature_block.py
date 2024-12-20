@@ -481,7 +481,7 @@ class FullBlockTest(BitTestFramework):
         redeem_script = CScript([self.coinbase_pubkey] + [OP_2DUP, OP_CHECKSIGVERIFY] * 5 + [OP_CHECKSIG])
         p2sh_script = script_to_p2sh_script(redeem_script)
 
-        # Create a transaction that spends one satoshi to the p2sh_script, the rest to OP_TRUE
+        # Create a transaction that spends one toshi to the p2sh_script, the rest to OP_TRUE
         # This must be signed because it is spending a coinbase
         spend = out[11]
         tx = self.create_tx(spend, 0, 1, p2sh_script)
@@ -491,7 +491,7 @@ class FullBlockTest(BitTestFramework):
         b39 = self.update_block(39, [tx])
         b39_outputs += 1
 
-        # Until block is full, add tx's with 1 satoshi to p2sh_script, the rest to OP_TRUE
+        # Until block is full, add tx's with 1 toshi to p2sh_script, the rest to OP_TRUE
         tx_new = None
         tx_last = tx
         total_weight = b39.get_weight()
@@ -996,11 +996,11 @@ class FullBlockTest(BitTestFramework):
         # -> b64 (18) -> b65 (19) -> b69 (20)
         #                        \-> b68 (20)
         #
-        # b68 - coinbase with an extra 10 satoshis,
-        #       creates a tx that has 9 satoshis from out[20] go to fees
-        #       this fails because the coinbase is trying to claim 1 satoshi too much in fees
+        # b68 - coinbase with an extra 10 toshis,
+        #       creates a tx that has 9 toshis from out[20] go to fees
+        #       this fails because the coinbase is trying to claim 1 toshi too much in fees
         #
-        # b69 - coinbase with extra 10 satoshis, and a tx that gives a 10 satoshi fee
+        # b69 - coinbase with extra 10 toshis, and a tx that gives a 10 toshi fee
         #       this succeeds
         #
         self.log.info("Reject a block trying to claim too much subsidy in the coinbase transaction")
@@ -1364,9 +1364,9 @@ class FullBlockTest(BitTestFramework):
         if spend is None:
             block = create_block(base_block_hash, coinbase, block_time, version=version)
         else:
-            coinbase.vout[0].nValue += spend.vout[0].nValue - 1  # all but one satoshi to fees
+            coinbase.vout[0].nValue += spend.vout[0].nValue - 1  # all but one toshi to fees
             coinbase.rehash()
-            tx = self.create_tx(spend, 0, 1, script)  # spend 1 satoshi
+            tx = self.create_tx(spend, 0, 1, script)  # spend 1 toshi
             self.sign_tx(tx, spend)
             tx.rehash()
             block = create_block(base_block_hash, coinbase, block_time, version=version, txlist=[tx])

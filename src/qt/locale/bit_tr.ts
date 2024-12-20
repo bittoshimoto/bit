@@ -954,8 +954,8 @@ Cüzdan kilidini aç.</translation>
         <translation type="unfinished">Herhangi bir alıcı mevcut toz eşiğinden daha düşük bir miktar alırsa bu etiket kırmızıya döner.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Her girdi için +/- %1 satoshi değişebilir.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Her girdi için +/- %1 toshi değişebilir.</translation>
     </message>
     <message>
         <source>(no label)</source>

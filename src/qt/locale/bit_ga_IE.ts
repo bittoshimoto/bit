@@ -794,7 +794,7 @@ Ní féidir síniú ach le seoltaí 'oidhreachta'.</translation>
         <translation type="unfinished">Casann an lipéad seo dearg má fhaigheann aon fhaighteoir méid níos lú ná an tairseach reatha dusta.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
         <translation type="unfinished">Athraitheach +/- %1 satosh(í) in aghaidh an ionchuir.</translation>
     </message>
     <message>

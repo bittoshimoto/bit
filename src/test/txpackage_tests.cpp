@@ -709,7 +709,7 @@ BOOST_FIXTURE_TEST_CASE(package_cpfp_tests, TestChain100Setup)
     }
 
     // Just because we allow low-fee parents doesn't mean we allow low-feerate packages.
-    // This package just pays 200 satoshis total. This would be enough to pay for the child alone,
+    // This package just pays 200 toshis total. This would be enough to pay for the child alone,
     // but isn't enough for the entire package to meet the 1sat/vbyte minimum.
     Package package_still_too_low;
     auto mtx_parent_cheap = CreateValidMempoolTransaction(/*input_transaction=*/m_coinbase_txns[1], /*input_vout=*/0,

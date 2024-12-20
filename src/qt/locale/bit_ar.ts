@@ -1071,7 +1071,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">‫تتحول هذه المذكرة إلى اللون الأحمر إذا تلقى مستلم كمية أقل من الحد الأعلى الحالي للغبار .‬</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
         <translation type="unfinished">‫يمكن يزيد أو ينقص %1 ساتوشي لكل مدخل.‬</translation>
     </message>
     <message>
@@ -2965,7 +2965,7 @@ If you are receiving this error you should request the merchant provide a BIP21 
     <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee rate of "100 satoshis per kvB" for a transaction size of 500 virtual bytes (half of 1 kvB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee rate of "100 toshis per kvB" for a transaction size of 500 virtual bytes (half of 1 kvB) would ultimately yield a fee of only 50 toshis.</source>
         <translation type="unfinished">‫حدد الرسوم المخصصة لكل كيلوبايت (١٠٠٠ بايت) من حجم العملية الافتراضي.
 
 ملاحظة: بما أن الرسوم تحتسب لكل بايت، معدل الرسوم ل “ ١٠٠ ساتوشي لكل كيلوبايت افتراضي” لعملية بحجم ٥٠٠ بايت افتراضي (نصف كيلوبايت افتراضي) ستكون ٥٠ ساتوشي فقط.‬</translation>

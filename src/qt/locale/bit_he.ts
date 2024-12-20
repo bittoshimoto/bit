@@ -905,7 +905,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">תווית זו הופכת לאדומה אם מישהו מהנמענים מקבל סכום נמוך יותר מסף האבק הנוכחי.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
         <translation type="unfinished">יכול להשתנות במגמה של +/- %1 סנטושי לקלט.</translation>
     </message>
     <message>

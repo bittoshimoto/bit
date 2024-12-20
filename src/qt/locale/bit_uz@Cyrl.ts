@@ -956,7 +956,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">Agar qabul qiluvchi joriy 'dust' chegarasidan kichikroq miqdor olsa, bu yorliq qizil rangga aylanadi</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
         <translation type="unfinished">Ҳар бир кирим +/- %1 сатоши(лар) билан ўзгариши мумкин.</translation>
     </message>
     <message>

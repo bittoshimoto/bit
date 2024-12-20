@@ -878,8 +878,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">Ang tatak na ito ay nagiging pula kung ang sinomang tatanggap ay tatanggap ng halaga na mas maliit  sa kasalukuyang ♦dust threshold♦</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Maaaring magbago ng +/- %1♦4satoshi(s)♦ kada ♦input♦.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Maaaring magbago ng +/- %1♦4toshi(s)♦ kada ♦input♦.</translation>
     </message>
     <message>
         <source>(no label)</source>

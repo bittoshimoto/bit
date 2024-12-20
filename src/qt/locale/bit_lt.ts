@@ -802,8 +802,8 @@ Pasirašymas galimas tik su 'legacy' tipo adresais.</translation>
         <translation type="unfinished">Ši etiketė tampa raudona, jei bet kuris gavėjas gauna mažesnę sumą nei dabartinė dulkių slenkstis.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Gali svyruoti nuo +/-%1 satoshi(-ų) vienam įvedimui.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Gali svyruoti nuo +/-%1 toshi(-ų) vienam įvedimui.</translation>
     </message>
     <message>
         <source>(no label)</source>

@@ -991,7 +991,7 @@ Potpisivanje je moguće samo sa 'legacy' adresama. </translation>
         <translation type="unfinished">Oznaka postane crvene boje ako bilo koji primatelj dobije iznos manji od trenutnog praga "prašine" (sićušnog iznosa).</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
         <translation type="unfinished">Može varirati +/- %1 satoši(ja) po inputu.</translation>
     </message>
     <message>
@@ -1401,7 +1401,7 @@ Potpisivanje je moguće samo sa 'legacy' adresama. </translation>
     </message>
     <message>
         <source>Progress increase per hour</source>
-        <translation type="unfinished">Postotak povećanja napretka na sat</translation>
+        <translation type="unfinished">Postotak povećanja napretka na tos</translation>
     </message>
     <message>
         <source>Estimated time left until synced</source>
@@ -2419,7 +2419,7 @@ Ako imate ovu grešku, od trgovca zatražite URI koji je kompatibilan sa BIP21.<
     </message>
     <message>
         <source>1 &amp;hour</source>
-        <translation type="unfinished">1 &amp;sat</translation>
+        <translation type="unfinished">1 &amp;tos</translation>
     </message>
     <message>
         <source>1 d&amp;ay</source>
@@ -2804,7 +2804,7 @@ Za više informacija o korištenju ove konzile, utipkajte %6.
     <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee rate of "100 satoshis per kvB" for a transaction size of 500 virtual bytes (half of 1 kvB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee rate of "100 toshis per kvB" for a transaction size of 500 virtual bytes (half of 1 kvB) would ultimately yield a fee of only 50 toshis.</source>
         <translation type="unfinished">Zadajte prilagodenu naknadu po kB (1000 bajtova) virtualne veličine transakcije.
 
 Napomena: Budući da se naknada računa po bajtu, naknada od "100 satošija po kB" za transakciju veličine 500 bajtova (polovica od 1 kB) rezultirala bi ultimativno naknadom od samo 50 satošija.</translation>
@@ -3925,7 +3925,7 @@ Idi na Datoteka &gt;  Otvori novčanik za učitanje novčanika.
     </message>
     <message>
         <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
-        <translation type="unfinished">Molimo provjerite jesu li datum i vrijeme na vašem računalu točni. Ako je vaš sat krivo namješten, %s neće raditi ispravno.</translation>
+        <translation type="unfinished">Molimo provjerite jesu li datum i vrijeme na vašem računalu točni. Ako je vaš tos krivo namješten, %s neće raditi ispravno.</translation>
     </message>
     <message>
         <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>

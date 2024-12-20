@@ -45,7 +45,7 @@ QString BitUnits::shortName(Unit unit)
     case Unit::BIT: return longName(unit);
     case Unit::mBIT: return longName(unit);
     case Unit::uBIT: return QString("bits");
-    case Unit::SAT: return QString("sat");
+    case Unit::SAT: return QString("tos");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }

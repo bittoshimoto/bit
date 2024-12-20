@@ -205,8 +205,8 @@ def assert_array_result(object_array, to_match, expected, should_not_find=False)
 def check_json_precision():
     """Make sure json library being used does not lose precision converting BIT values"""
     n = Decimal("20000000.00000003")
-    satoshis = int(json.loads(json.dumps(float(n))) * 1.0e8)
-    if satoshis != 2000000000000003:
+    toshis = int(json.loads(json.dumps(float(n))) * 1.0e8)
+    if toshis != 2000000000000003:
         raise RuntimeError("JSON encode/decode loses precision")
 
 
@@ -237,12 +237,12 @@ def ceildiv(a, b):
 
 def get_fee(tx_size, feerate_bit_kvb):
     """Calculate the fee in BIT given a feerate is BIT/kvB. Reflects CFeeRate::GetFee"""
-    feerate_sat_kvb = int(feerate_bit_kvb * Decimal(1e8)) # Fee in sat/kvb as an int to avoid float precision errors
-    target_fee_sat = ceildiv(feerate_sat_kvb * tx_size, 1000) # Round calculated fee up to nearest sat
+    feerate_sat_kvb = int(feerate_bit_kvb * Decimal(1e8)) # Fee in tos/kvb as an int to avoid float precision errors
+    target_fee_sat = ceildiv(feerate_sat_kvb * tx_size, 1000) # Round calculated fee up to nearest tos
     return target_fee_sat / Decimal(1e8) # Return result in  BIT
 
 
-def satoshi_round(amount):
+def toshi_round(amount):
     return Decimal(amount).quantize(Decimal('0.00000001'), rounding=ROUND_DOWN)
 
 

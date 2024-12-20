@@ -17,7 +17,7 @@ from test_framework.util import (
     assert_greater_than,
     assert_greater_than_or_equal,
     assert_raises_rpc_error,
-    satoshi_round,
+    toshi_round,
 )
 from test_framework.wallet import MiniWallet
 
@@ -37,7 +37,7 @@ def small_txpuzzle_randfee(
     # Exponentially distributed from 1-128 * fee_increment
     rand_fee = float(fee_increment) * (1.1892 ** random.randint(0, 28))
     # Total fee ranges from min_fee to min_fee + 127*fee_increment
-    fee = min_fee - fee_increment + satoshi_round(rand_fee)
+    fee = min_fee - fee_increment + toshi_round(rand_fee)
     utxos_to_spend = []
     total_in = Decimal("0.00000000")
     while total_in <= (amount + fee) and len(conflist) > 0:
@@ -119,7 +119,7 @@ def check_estimates(node, fees_seen):
 
 
 def make_tx(wallet, utxo, feerate):
-    """Create a 1in-1out transaction with a specific input and feerate (sat/vb)."""
+    """Create a 1in-1out transaction with a specific input and feerate (tos/vb)."""
     return wallet.create_self_transfer(
         utxo_to_spend=utxo,
         fee_rate=Decimal(feerate * 1000) / COIN,
@@ -240,7 +240,7 @@ class EstimateFeeTest(BitTestFramework):
         # The broadcaster and block producer
         node = self.nodes[0]
         miner = self.nodes[1]
-        # In sat/vb
+        # In tos/vb
         low_feerate = 1
         high_feerate = 10
         # Cache the utxos of which to replace the spender after it failed to get

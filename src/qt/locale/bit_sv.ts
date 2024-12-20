@@ -928,8 +928,8 @@ Försök igen.</translation>
         <translation type="unfinished">Denna etikett blir röd om någon mottagare tar emot ett belopp som är lägre än aktuell dammtröskel.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Kan variera +/- %1 satoshi per inmatning.</translation>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
+        <translation type="unfinished">Kan variera +/- %1 toshi per inmatning.</translation>
     </message>
     <message>
         <source>(no label)</source>

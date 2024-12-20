@@ -34,7 +34,7 @@ from test_framework.util import (
 from test_framework.wallet import MiniWallet
 
 
-DUST_RELAY_TX_FEE = 3000  # default setting [sat/kvB]
+DUST_RELAY_TX_FEE = 3000  # default setting [tos/kvB]
 
 
 class DustRelayFeeTest(BitTestFramework):
@@ -96,14 +96,14 @@ class DustRelayFeeTest(BitTestFramework):
             (CScript([OP_RETURN, b'superimportanthash']),      "null data (OP_RETURN)"),
         )
 
-        # test default (no parameter), disabled (=0) and a bunch of arbitrary dust fee rates [sat/kvB]
+        # test default (no parameter), disabled (=0) and a bunch of arbitrary dust fee rates [tos/kvB]
         for dustfee_sat_kvb in (DUST_RELAY_TX_FEE, 0, 1, 66, 500, 1337, 12345, 21212, 333333):
             dustfee_bit_kvb = dustfee_sat_kvb / Decimal(COIN)
             if dustfee_sat_kvb == DUST_RELAY_TX_FEE:
-                self.log.info(f"Test default dust limit setting ({dustfee_sat_kvb} sat/kvB)...")
+                self.log.info(f"Test default dust limit setting ({dustfee_sat_kvb} tos/kvB)...")
             else:
                 dust_parameter = f"-dustrelayfee={dustfee_bit_kvb:.8f}"
-                self.log.info(f"Test dust limit setting {dust_parameter} ({dustfee_sat_kvb} sat/kvB)...")
+                self.log.info(f"Test dust limit setting {dust_parameter} ({dustfee_sat_kvb} tos/kvB)...")
                 self.restart_node(0, extra_args=[dust_parameter])
 
             for output_script, description in output_scripts:

@@ -936,7 +936,7 @@ Daxil olma, yalnız 'qanuni' tipli ünvanlar ilə mümkündür.</translation>
         <translation type="unfinished">Əgər alıcı məbləği cari toz həddindən az alarsa bu etiket qırmızı olur.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <source>Can vary +/- %1 toshi(s) per input.</source>
         <translation type="unfinished">Hər daxilolmada +/- %1 satoşi dəyişə bilər.</translation>
     </message>
     <message>
